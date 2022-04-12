@@ -6,34 +6,20 @@ phases:
     commands:
       - mvn clean install
       - docker login -u sharmaprachi -p ps01@772244#
-#       - echo Logging in to Amazon ECR...
-#       - aws --version
-#       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-#       - REPOSITORY_URI=688977122149.dkr.ecr.ap-south-1.amazonaws.com/javatechie-registry
-#       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-#       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
 
   build:
     commands:
       - echo Build started on `date`
+      - echo sonar analysis...
       - mvn sonar:sonar -Dsonar.login=823472cb9d8d4cbb3aeeb2d36929dad12c1325db -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=sharmaprachi1504 -Dsonar.projectKey=springboot-images-new
       - echo Building the Docker image...
       - docker build -t sharmaprachi/awscodebuild .
-#      - docker tag sharmaprachi/awscodebuild:latest sharmaprachi/awscodebuild:$IMAGE_TAG
+      
   post_build:
-    commands:
-     
+    commands:    
       - docker push sharmaprachi/awscodebuild:latest
-#       - echo Build completed on `date`
-#       - echo Pushing the Docker images...
-#       - docker push $REPOSITORY_URI:latest
-#       - docker push $REPOSITORY_URI:$IMAGE_TAG
-#       - echo Writing image definitions file...
-#       - printf '[{"name":"order-service","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-#       - cat imagedefinitions.json
-     
+      
 artifacts:
   files:
-#   - imagedefinitions.json
    - target/order-service.jar
 
