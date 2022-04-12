@@ -16,6 +16,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
+      - mvn sonar:sonar -Dsonar.login=823472cb9d8d4cbb3aeeb2d36929dad12c1325db -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=sharmaprachi1504 -Dsonar.projectKey=springboot-images-new
       - echo Building the Docker image...
       - docker build -t sharmaprachi/awscodebuild .
 #      - docker tag sharmaprachi/awscodebuild:latest sharmaprachi/awscodebuild:$IMAGE_TAG
