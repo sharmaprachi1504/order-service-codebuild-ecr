@@ -15,7 +15,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t sharmaprachi/awscodebuild: .
+      - docker build -t sharmaprachi/awscodebuild .
 #      - docker tag sharmaprachi/awscodebuild:latest sharmaprachi/awscodebuild:$IMAGE_TAG
   post_build:
     commands:
