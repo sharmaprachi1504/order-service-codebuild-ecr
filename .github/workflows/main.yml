@@ -14,7 +14,7 @@ on:
         - master
 jobs:
   build:
-    runs-on: CAI-Enterprise
+    runs-on: ubuntu-latest
     env:
       VERBOSITY: Normal
 
