@@ -1,0 +1,31 @@
+name: sendgrid mail
+
+env:
+  Verbosity: Normal
+  SENDGRID_API_KEY: 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
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+        - master
+jobs:
+  build:
+    runs-on: CAI-Enterprise
+    env:
+      VERBOSITY: Normal
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: npm install
+      run: npm install --save @sendgrid/mail
+    - name: SendGrid
+      run: chmod +x .github/sendgrid.js
+    - name: SendGrid
+      uses: peter-evans/sendgrid-action@v1
+      ##env:
+        #SENDGRID_API_KEY: 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 
+       #SCRIPT_FILEPATH: ./some-path/email-sending-script.js
