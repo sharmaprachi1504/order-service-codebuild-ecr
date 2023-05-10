@@ -14,8 +14,9 @@ pipeline {
         }
         stage('SonarAnalysis') {
             steps {
-                bat 'mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.version=5.6 -Dsonar.login=ca8f7549be785d7880c59ce1ae6d4f0714b57abe -Dsonar.organization=narendrakumar02 -Dsonar.projectKey=narendrakumar02_BenchFreshersTrainingAssignment'
+                bat 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=65ae3c9e182359c95aa2126fc0e94810732ba395 -Dsonar.organization=prachisharma01 -Dsonar.projectKey=Bench_Practice'
             }
+           // -Dsonar.version=5.6
         }
         stage('DockerImageBuild') {
             steps {
