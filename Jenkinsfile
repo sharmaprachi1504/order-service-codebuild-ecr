@@ -9,6 +9,7 @@ pipeline {
         }
         stage('SonarAnalysis') {
             steps {
+                echo
                 //bat 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=fd6f2d848a93fd3a81af15bcbd40efe0c915d754 -Dsonar.projectKey=Bench_Practice_Java'
             }
         }
